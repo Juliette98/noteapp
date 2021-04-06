@@ -1,1 +1,18 @@
-<p>notes works!</p>
+<form>
+    <input name="note-title" type="text" [(ngModel)]="notesService.noteTitle" placeholder="Note title"/>
+    <textarea name="note-text" [(ngModel)]="notesService.noteText" placeholder="Note Text"></textarea>
+    <button (click)="notesService.addNote()">Ajouter</button>
+</form>
+
+<div class="notes">
+    <div class="note" *ngFor="let note of notesService.notes" [ngStyle]="{'background':note.color}">
+        <div class="title">
+            {{note.noteTitle}}
+        </div>
+        <div class="text">
+            {{note.noteText}}
+        </div>
+        <button class="delete" (click)="notesService.deleteNote(note)">delete</button>
+        <button class="edit" routerLink="/note/{{note.id}}">edit</button>
+    </div>
+</div>

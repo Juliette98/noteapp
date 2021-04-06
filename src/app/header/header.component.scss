@@ -1,0 +1,28 @@
+:host{
+    display: block;
+    position: relative;
+    height: 50px;
+    background: white;
+    width: 100%;
+}
+
+.menu{
+    .element{
+        position: relative;
+        height: 50px;
+        display: grid;
+        place-content: center;
+        float: left;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+  .element.active-link{
+      background: hotpink;
+  }
+
+  .element:hover{
+      cursor: pointer;
+    background: greenyellow;
+  }
+}
