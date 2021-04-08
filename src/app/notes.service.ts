@@ -18,12 +18,11 @@ export class NotesService {
   constructor() { }
 
   addNote(): void{
-    const note: Note = {
-      id: Math.random(),
-      noteTitle: this.noteTitle,
-      noteText: this.noteText,
-      color: this.colors[Math.floor(Math.random() * Math.floor(2))]
-    };
+    const note: Note = new Note();
+    note.id = Math.random();
+    note.noteTitle = this.noteTitle,
+    note.noteText = this.noteText,
+    note.color = this.colors[Math.floor(Math.random() * Math.floor(2))];
     this.noteTitle = '';
     this.noteText = '';
     this.notes.push(note);
@@ -34,7 +33,7 @@ export class NotesService {
     this.notes.splice(index, 1);
   }
 
-  getNote(noteId: number): Note{
+  getNote(noteId: number): Note|null{
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.notes.length; i++){
       const note = this.notes[i];

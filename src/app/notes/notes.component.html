@@ -1,18 +1,40 @@
-<form>
-    <input name="note-title" type="text" [(ngModel)]="notesService.noteTitle" placeholder="Note title"/>
-    <textarea name="note-text" [(ngModel)]="notesService.noteText" placeholder="Note Text"></textarea>
-    <button (click)="notesService.addNote()">Ajouter</button>
-</form>
+<mat-card class="new-note">
+    <mat-card-header>
+        <mat-card-title>New note</mat-card-title>
+        <mat-card-subtitle>Please fill all fields</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field>
+            <mat-label>Note title</mat-label>
+            <input matInput type="text" [(ngModel)]="notesService.noteTitle"/>
+            <button mat-button *ngIf="notesService.noteTitle" matSuffix mat-icon-button aria-label="Clear">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput [(ngModel)]="notesService.noteText" placeholder="Note Text"></textarea>
+        </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button (click)="notesService.addNote()" mat-raised-button color="accent">Ajouter</button>
+    </mat-card-actions>
+</mat-card>
 
 <div class="notes">
-    <div class="note" *ngFor="let note of notesService.notes" [ngStyle]="{'background':note.color}">
-        <div class="title">
-            {{note.noteTitle}}
-        </div>
-        <div class="text">
-            {{note.noteText}}
-        </div>
-        <button class="delete" (click)="notesService.deleteNote(note)">delete</button>
-        <button class="edit" routerLink="/note/{{note.id}}">edit</button>
-    </div>
+    <mat-card class="note" *ngFor="let note of notesService.notes">
+        <mat-car-header>
+            <mat-card-title>{{note.noteTitle}}</mat-card-title>
+        </mat-car-header>
+
+        <mat-card-content class="text">
+            <p> {{note.noteText}}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button class="delete" (click)="notesService.deleteNote(note)" mat-raised-button color="accent">delete</button>
+            <!--button class="edit" mat-button (click)="editNote(note.id)">Edit F</button-->
+            <button class="edit" mat-button routerLink="/note/{{note.id}}">Edit L</button>
+        </mat-card-actions>
+    </mat-card>
 </div>

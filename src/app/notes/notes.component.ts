@@ -11,6 +11,4 @@ export class NotesComponent implements OnInit {
   constructor(public notesService: NotesService) { }
 
   ngOnInit(): void {}
-
-
 }
