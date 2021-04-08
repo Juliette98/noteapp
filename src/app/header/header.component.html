@@ -1,10 +1,5 @@
-<div class="container">
-    <div class="menu">
-        <div routerLink="/home" routerLinkActive="active-link" class="element">
-            Home
-        </div>
-        <div routerLink="/notes" routerLinkActive="active-link" class="element">
-            Notes
-        </div>
-    </div>
-</div>
+<mat-toolbar color="primary">
+    <span>noteapp</span>
+    <button routerLink="/" routerLinkActive="active-link" mat-button>Home</button>
+    <button routerLink="/notes" routerLinkActive="active-link" mat-raised-button color="accent">Notes</button>
+</mat-toolbar>

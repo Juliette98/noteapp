@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Note} from './models/note';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class NotesService {
   noteTitle: string;
   noteText: string;
 
-  notes: Array<any> = new Array<any>();
+  notes: Array<Note> = new Array<Note>();
 
   colors: Array<any> = [
       'red', 'yellow', 'blue'
@@ -17,7 +18,7 @@ export class NotesService {
   constructor() { }
 
   addNote(): void{
-    const note: any = {
+    const note: Note = {
       id: Math.random(),
       noteTitle: this.noteTitle,
       noteText: this.noteText,
@@ -28,12 +29,12 @@ export class NotesService {
     this.notes.push(note);
   }
 
-  deleteNote(note: any): void{
+  deleteNote(note: Note): void{
     const index = this.notes.indexOf(note);
     this.notes.splice(index, 1);
   }
 
-  getNote(noteId: number): any{
+  getNote(noteId: number): Note{
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < this.notes.length; i++){
       const note = this.notes[i];
@@ -44,7 +45,7 @@ export class NotesService {
     return null;
   }
 
-  saveNote(note: any): any{
+  saveNote(note: Note): void{
     const index = this.notes.indexOf(note);
     this.notes.splice(index, 1);
     this.notes.push(note);

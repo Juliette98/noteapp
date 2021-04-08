@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotesService } from '../notes.service';
+import {Note} from '../models/note';
 
 @Component({
   selector: 'app-note',
@@ -10,7 +11,7 @@ import { NotesService } from '../notes.service';
 export class NoteComponent implements OnInit {
 
   id: number;
-  note: any = {id: 0, noteTitle: '', noteText: ''};
+  note: Note;
 
   constructor(private route: ActivatedRoute, private router: Router, public notesService: NotesService) { }
 
