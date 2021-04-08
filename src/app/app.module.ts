@@ -14,6 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { NoteBlockComponent } from './note-block/note-block.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatInputModule} from '@angular/material/input';
     HeaderComponent,
     HomeComponent,
     NotesComponent,
-    NoteComponent
+    NoteComponent,
+    NoteBlockComponent
   ],
   imports: [
     BrowserModule,

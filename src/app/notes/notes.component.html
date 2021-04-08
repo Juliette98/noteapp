@@ -22,19 +22,5 @@
 </mat-card>
 
 <div class="notes">
-    <mat-card class="note" *ngFor="let note of notesService.notes">
-        <mat-car-header>
-            <mat-card-title>{{note.noteTitle}}</mat-card-title>
-        </mat-car-header>
-
-        <mat-card-content class="text">
-            <p> {{note.noteText}}</p>
-        </mat-card-content>
-
-        <mat-card-actions>
-            <button class="delete" (click)="notesService.deleteNote(note)" mat-raised-button color="accent">delete</button>
-            <!--button class="edit" mat-button (click)="editNote(note.id)">Edit F</button-->
-            <button class="edit" mat-button routerLink="/note/{{note.id}}">Edit L</button>
-        </mat-card-actions>
-    </mat-card>
+    <app-note-block *ngFor="let note of notesService.notes" [note]="note" (deleteNote)="notesService.deleteNote($event)"></app-note-block>
 </div>
