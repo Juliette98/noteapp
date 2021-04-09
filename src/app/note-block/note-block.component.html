@@ -9,7 +9,7 @@
 
     <mat-card-actions>
         <button class="delete" (click)="deleteNoteEvent()" mat-raised-button color="accent">delete</button>
-        <button class="edit" mat-button>Edit F</button>
+        <button class="edit" (click)="editNoteEvent()" mat-button>Edit F</button>
         <button class="edit" mat-button routerLink="/note/{{note.id}}">Edit L</button>
     </mat-card-actions>
 </mat-card>

@@ -22,5 +22,5 @@
 </mat-card>
 
 <div class="notes">
-    <app-note-block *ngFor="let note of notesService.notes" [note]="note" (deleteNote)="notesService.deleteNote($event)"></app-note-block>
+    <app-note-block *ngFor="let note of notesService.notes" [note]="note" (deleteNote)="notesService.deleteNote($event)" (editNote)="redirectEdit($event)"></app-note-block>
 </div>

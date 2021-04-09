@@ -14,7 +14,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { NoteBlockComponent } from './note-block/note-block.component';
+import {NoteBlockComponent } from './note-block/note-block.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NoteBlockComponent } from './note-block/note-block.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,5 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {Note} from '../models/note';
-import {NotesService} from '../notes.service';
 import {EventEmitter} from '@angular/core';
 
 @Component({
@@ -12,13 +11,18 @@ export class NoteBlockComponent implements OnInit {
 
   @Input() note: Note;
   @Output() deleteNote = new EventEmitter<Note>();
-  constructor(public notesService: NotesService) { }
+  @Output() editNote = new EventEmitter<Note>();
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   deleteNoteEvent(): void{
     this.deleteNote.emit(this.note);
+  }
+
+  editNoteEvent(): void{
+    this.editNote.emit(this.note);
   }
 
 }
