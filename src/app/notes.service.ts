@@ -1,31 +1,20 @@
 import { Injectable } from '@angular/core';
 import {Note} from './models/note';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotesService {
-
-  noteTitle: string;
-  noteText: string;
-
   notes: Array<Note> = new Array<Note>();
+  constructor(private http: HttpClient) { }
 
-  colors: Array<any> = [
-      'red', 'yellow', 'blue'
-  ];
+  getNotes(): any{
+    return this.http.get('http://localhost:3000/notes');
+  }
 
-  constructor() { }
-
-  addNote(): void{
-    const note: Note = new Note();
-    note.id = Math.random();
-    note.noteTitle = this.noteTitle,
-    note.noteText = this.noteText,
-    note.color = this.colors[Math.floor(Math.random() * Math.floor(2))];
-    this.noteTitle = '';
-    this.noteText = '';
-    this.notes.push(note);
+  addNote(note): any{
+    return this.http.post('http://localhost:3000/notes', note);
   }
 
   deleteNote(note: Note): void{
