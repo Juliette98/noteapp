@@ -23,13 +23,14 @@ export class NotesComponent implements OnInit {
   }
 
   redirectEdit(note: Note): void{
-    this.router.navigate(['/note', note.id]);
+    this.router.navigate(['/note', note._id]);
   }
 
   getNotes(): void{
-    this.notesService.getNotes().subcribe(
+    this.notesService.getNotes().subscribe(
         (notes: any) => {
-          this.notes = notes.data;
+          this.notes = notes;
+          console.log(notes);
         },
         (error) => {
           console.log('Error');
@@ -39,7 +40,7 @@ export class NotesComponent implements OnInit {
 
   addNote(): void{
     const note: Note = new Note();
-    note.id = Math.random();
+    note._id = Math.random();
     note.noteTitle = this.noteTitle,
     note.noteText = this.noteText,
     note.color = this.colors[Math.floor(Math.random() * Math.floor(2))];
@@ -49,10 +50,22 @@ export class NotesComponent implements OnInit {
 
     this.notesService.addNote(note).subscribe(
         (notes: any) => {
-          this.notes = notes.data;
+          this.notes.push(note);
         },
         (error) => {
           console.log(('Error'));
+        }
+    );
+  }
+
+  deleteNote(note: Note): void{
+    this.notesService.deleteNote(note._id).subscribe(
+        () => {
+          const index = this.notes.indexOf(note);
+          this.notes.splice(index, 1);
+        },
+        (error) => {
+          console.log('Delete error');
         }
     );
   }

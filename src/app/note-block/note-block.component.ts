@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
 import {Note} from '../models/note';
 import {EventEmitter} from '@angular/core';
+import {NotesService} from '../notes.service';
 
 @Component({
   selector: 'app-note-block',
@@ -9,10 +10,11 @@ import {EventEmitter} from '@angular/core';
 })
 export class NoteBlockComponent implements OnInit {
 
+  noteStatus = 'view';
   @Input() note: Note;
   @Output() deleteNote = new EventEmitter<Note>();
   @Output() editNote = new EventEmitter<Note>();
-  constructor() { }
+  constructor(public notesService: NotesService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +25,19 @@ export class NoteBlockComponent implements OnInit {
 
   editNoteEvent(): void{
     this.editNote.emit(this.note);
+  }
+
+  updateNote(): void{
+    this.noteStatus = 'loading';
+    this.notesService.updateNote(this.note).subscribe(
+        (note: Note) => {
+          this.noteStatus = 'view';
+        },
+        (error) => {
+          this.noteStatus = 'error';
+          console.log('Note update error');
+        }
+    );
   }
 
 }
