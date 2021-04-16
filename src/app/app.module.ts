@@ -16,6 +16,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {NoteBlockComponent } from './note-block/note-block.component';
 import {MatIconModule} from '@angular/material/icon';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {MatIconModule} from '@angular/material/icon';
     HomeComponent,
     NotesComponent,
     NoteComponent,
-    NoteBlockComponent
+    NoteBlockComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

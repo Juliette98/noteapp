@@ -30,7 +30,6 @@ export class NotesComponent implements OnInit {
     this.notesService.getNotes().subscribe(
         (notes: any) => {
           this.notes = notes;
-          console.log(notes);
         },
         (error) => {
           console.log('Error');
